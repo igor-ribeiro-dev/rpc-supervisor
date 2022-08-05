@@ -1,0 +1,28 @@
+{
+  "name": "rpc-supervisor",
+  "version": "1.0.0",
+  "description": "XML-RPC based client interface for Supervisor.",
+  "main": "lib/supervisorrpc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igor-ribeiro-dev/rpc-supervisor.git"
+  },
+  "keywords": [
+    "supervisor",
+    "xmlrpc",
+    "api",
+    "rpc"
+  ],
+  "author": "Igor Ribeiro <igorribeiro4467@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igor-ribeiro-dev/rpc-supervisor/issues"
+  },
+  "homepage": "https://github.com/igor-ribeiro-dev/rpc-supervisor#readme"
+}
