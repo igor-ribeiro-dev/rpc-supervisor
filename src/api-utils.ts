@@ -1,9 +1,11 @@
-const xmlrpc = require("xmlrpc");
-module.exports.getFullMethodName = function (baseName, method) {
+import xmlrpc, {Client} from 'xmlrpc';
+import {ClientOptions} from "./types";
+
+export function getFullMethodName(baseName: string, method: string) {
     return [baseName, method].join('.');
 }
 
-module.exports.makeRpcClient = function (options) {
+export function makeRpcClient(options: ClientOptions): Client {
 
     options = options || {};
 
@@ -22,11 +24,14 @@ module.exports.makeRpcClient = function (options) {
     };
 
     if (options.username && options.password) {
-        clientOptions.basic_auth = {
-            user: options.username,
-            pass: options.password,
-        }
+        Object.assign(clientOptions, clientOptions, {
+            basic_auth: {
+                user: options.username,
+                pass: options.password,
+            }
+        })
     }
 
+    // @ts-ignore
     return xmlrpc.createClient(clientOptions);
 }

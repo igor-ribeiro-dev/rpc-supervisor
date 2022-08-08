@@ -1,8 +1,7 @@
-const SupervisorApi = require("./supervisor.js");
-const SystemApi = require("./system.js");
-const {makeRpcClient} = require("./api-utils.js");
-
-const app = exports = module.exports = {};
+import SupervisorApi from "./supervisor.js";
+import SystemApi from "./system.js";
+import {makeRpcClient} from "./api-utils.js";
+import {ClientOptions} from "./types";
 
 /**
  *
@@ -13,7 +12,7 @@ const app = exports = module.exports = {};
  * @param options.password
  * @returns {SupervisorApi}
  */
-app.createSupervisorApi = function (options) {
+export function createSupervisorApi (options: ClientOptions) {
     return new SupervisorApi(makeRpcClient(options));
 }
 
@@ -26,6 +25,6 @@ app.createSupervisorApi = function (options) {
  * @param options.password
  * @returns {SystemApi}
  */
-app.createSystemApi = function (options) {
+export function createSystemApi(options: ClientOptions) {
     return new SystemApi(makeRpcClient(options));
 }

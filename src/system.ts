@@ -1,10 +1,7 @@
-const SupervisorApi = require("./supervisor.js");
-const Api = require("./api");
+import SupervisorApi from "./supervisor.js";
+import Api from "./api";
 
-/**
- *
- */
-class SystemApi extends Api {
+export default class SystemApi extends Api {
 
     apiBaseName = 'system'
 
@@ -17,13 +14,10 @@ class SystemApi extends Api {
      * @returns {Promise<string[]>}
      */
     async listMethods() {
-        return this._call('listMethods');
+        return this.call('listMethods');
     }
 
     methodHelp() {}
     methodSignature() {}
     multicall() {}
 }
-
-
-exports = module.exports = SystemApi;
