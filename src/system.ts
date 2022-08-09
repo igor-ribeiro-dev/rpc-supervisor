@@ -21,6 +21,8 @@ export default class SystemApi extends Api {
     async methodHelp(name: string): Promise<string> {
         return this.call('methodHelp', [name]);
     }
-    methodSignature() {}
-    multicall() {}
+
+    async methodSignature(name: string): Promise<string[]> {
+        return this.call('methodSignature', [name]);
+    }
 }
