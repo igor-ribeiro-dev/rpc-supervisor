@@ -11,133 +11,135 @@ export default class SupervisorApi extends Api {
     }
 
 
-    addProcessGroup() {
+    async addProcessGroup() {
     }
 
-    clearAllProcessLogs(): Promise<ProcessInfo[]> {
+    async clearAllProcessLogs(): Promise<ProcessInfo[]> {
         return this.call('clearAllProcessLogs');
     }
 
-    clearLog(): Promise<boolean> {
+    async clearLog(): Promise<boolean> {
         return this.call('clearLog');
     }
 
-    clearProcessLog() {
+    async clearProcessLog() {
     }
 
-    clearProcessLogs(): Promise<boolean> {
+    async clearProcessLogs(): Promise<boolean> {
         return this.call('clearProcessLogs');
     }
 
-    getAPIVersion(): Promise<string> {
+    async getAPIVersion(): Promise<string> {
         return this.call('getAPIVersion');
     }
 
-    getAllConfigInfo() {
+    async getAllConfigInfo() {
     }
 
-    getAllProcessInfo() {
+    async getAllProcessInfo(): Promise<ProcessInfo[]> {
+        return this.call('getAllProcessInfo');
     }
 
-    getIdentification(): Promise<string> {
+    async getIdentification(): Promise<string> {
         return this.call('getIdentification');
     }
 
-    getPID(): Promise<number> {
+    async getPID(): Promise<number> {
         return this.call('getPID');
     }
 
-    getProcessInfo(name: string): Promise<ProcessInfo> {
+    async getProcessInfo(name: string): Promise<ProcessInfo> {
         return this.call('getProcessInfo', [name]);
     }
 
-    getState(): Promise<SupervisorState> {
+    async getState(): Promise<SupervisorState> {
         return this.call('getState');
     }
 
-    getSupervisorVersion(): Promise<string> {
+    async getSupervisorVersion(): Promise<string> {
         return this.call('getSupervisorVersion');
     }
 
-    getVersion() {
+    async getVersion() {
     }
 
-    readLog(offset: number, length: number): Promise<string> {
+    async readLog(offset: number, length: number): Promise<string> {
         return this.call('readLog', [offset, length])
     }
 
-    readMainLog(name: string, offset: number, length: number): Promise<string> {
+    async readMainLog(name: string, offset: number, length: number): Promise<string> {
         return this.call('readMainLog', [name, offset, length]);
     }
 
-    readProcessLog(name: string, offset: number, length: number): Promise<string> {
+    async readProcessLog(name: string, offset: number, length: number): Promise<string> {
         return this.call('readProcessLog', [name, offset, length]);
     }
 
-    readProcessStderrLog(name: string, offset: number, length: number): Promise<string> {
+    async readProcessStderrLog(name: string, offset: number, length: number): Promise<string> {
         return this.call('readProcessStderrLog', [name, offset, length]);
     }
 
-    readProcessStdoutLog(name: string, offset: number, length: number): Promise<string> {
+    async readProcessStdoutLog(name: string, offset: number, length: number): Promise<string> {
         return this.call('readProcessStdoutLog', [name, offset, length]);
     }
 
-    reloadConfig() {
+    async reloadConfig() {
     }
 
-    removeProcessGroup() {
+    async removeProcessGroup() {
     }
 
-    restart(): Promise<boolean> {
+    async restart(): Promise<boolean> {
         return this.call('restart');
     }
 
-    sendProcessStdin() {
+    async sendProcessStdin() {
     }
 
-    sendRemoteCommEvent() {
+    async sendRemoteCommEvent() {
     }
 
-    shutdown(): Promise<boolean> {
+    async shutdown(): Promise<boolean> {
         return this.call('shutdown');
     }
 
-    signalAllProcesses() {
+    async signalAllProcesses() {
     }
 
-    signalProcess() {
+    async signalProcess() {
     }
 
-    signalProcessGroup() {
+    async signalProcessGroup() {
     }
 
-    startAllProcesses() {
+    async startAllProcesses() {
     }
 
-    startProcess() {
+    async startProcess(name: string, wait: boolean = true): Promise<boolean> {
+        return this.call('startProcess', [name, wait]);
     }
 
-    startProcessGroup() {
+    async startProcessGroup() {
     }
 
-    stopAllProcesses() {
+    async stopAllProcesses() {
     }
 
-    stopProcess() {
+    async stopProcess() {
     }
 
-    stopProcessGroup() {
+    async stopProcessGroup() {
     }
 
-    tailProcessLog(name: string, offset: number, length: number): Promise<string> {
+    async tailProcessLog(name: string, offset: number, length: number): Promise<string> {
         return this.call('tailProcessLog', [name, offset, length]);
     }
 
-    tailProcessStderrLog(name: string, offset: number, length: number): Promise<string> {
+    async tailProcessStderrLog(name: string, offset: number, length: number): Promise<string> {
         return this.call('tailProcessStderrLog', [name, offset, length]);
     }
 
-    tailProcessStdoutLog(name: string, offset: number, length: number): Promise<string> {
+    async tailProcessStdoutLog(name: string, offset: number, length: number): Promise<string> {
         return this.call('tailProcessStdoutLog', [name, offset, length]);
     }
 
