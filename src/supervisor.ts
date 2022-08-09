@@ -25,7 +25,8 @@ export default class SupervisorApi extends Api {
     clearProcessLogs() {
     }
 
-    getAPIVersion() {
+    getAPIVersion(): Promise<string> {
+        return this.call('getAPIVersion');
     }
 
     getAllConfigInfo() {
