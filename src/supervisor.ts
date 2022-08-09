@@ -17,7 +17,8 @@ export default class SupervisorApi extends Api {
     clearAllProcessLogs() {
     }
 
-    clearLog() {
+    clearLog(): Promise<boolean> {
+        return this.call('clearLog');
     }
 
     clearProcessLog() {
@@ -59,7 +60,8 @@ export default class SupervisorApi extends Api {
     getVersion() {
     }
 
-    readLog() {
+    readLog(offset: number, length: number): Promise<string> {
+        return this.call('readLog', [offset, length])
     }
 
     readMainLog() {
@@ -80,7 +82,8 @@ export default class SupervisorApi extends Api {
     removeProcessGroup() {
     }
 
-    restart() {
+    restart(): Promise<boolean> {
+        return this.call('restart');
     }
 
     sendProcessStdin() {
@@ -89,7 +92,8 @@ export default class SupervisorApi extends Api {
     sendRemoteCommEvent() {
     }
 
-    shutdown() {
+    shutdown(): Promise<boolean> {
+        return this.call('shutdown');
     }
 
     signalAllProcesses() {
