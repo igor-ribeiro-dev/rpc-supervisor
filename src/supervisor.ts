@@ -10,7 +10,6 @@ export default class SupervisorApi extends Api {
         return new SystemApi(this.client);
     }
 
-
     async addProcessGroup(name: string): Promise<boolean> {
         return this.call('addProcessGroup', [name]);
     }

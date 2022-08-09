@@ -1,7 +1,7 @@
 import xmlrpc, {Client} from 'xmlrpc';
 import {ClientOptions} from "./types";
 
-export function getFullMethodName(baseName: string, method: string) {
+export function getFullMethodName(baseName: string, method: string): string {
     return [baseName, method].join('.');
 }
 
