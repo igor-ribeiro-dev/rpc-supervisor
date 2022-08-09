@@ -14,7 +14,8 @@ export default class SupervisorApi extends Api {
     addProcessGroup() {
     }
 
-    clearAllProcessLogs() {
+    clearAllProcessLogs(): Promise<ProcessInfo[]> {
+        return this.call('clearAllProcessLogs');
     }
 
     clearLog(): Promise<boolean> {
@@ -24,7 +25,8 @@ export default class SupervisorApi extends Api {
     clearProcessLog() {
     }
 
-    clearProcessLogs() {
+    clearProcessLogs(): Promise<boolean> {
+        return this.call('clearProcessLogs');
     }
 
     getAPIVersion(): Promise<string> {
@@ -64,16 +66,20 @@ export default class SupervisorApi extends Api {
         return this.call('readLog', [offset, length])
     }
 
-    readMainLog() {
+    readMainLog(name: string, offset: number, length: number): Promise<string> {
+        return this.call('readMainLog', [name, offset, length]);
     }
 
-    readProcessLog() {
+    readProcessLog(name: string, offset: number, length: number): Promise<string> {
+        return this.call('readProcessLog', [name, offset, length]);
     }
 
-    readProcessStderrLog() {
+    readProcessStderrLog(name: string, offset: number, length: number): Promise<string> {
+        return this.call('readProcessStderrLog', [name, offset, length]);
     }
 
-    readProcessStdoutLog() {
+    readProcessStdoutLog(name: string, offset: number, length: number): Promise<string> {
+        return this.call('readProcessStdoutLog', [name, offset, length]);
     }
 
     reloadConfig() {
@@ -123,13 +129,16 @@ export default class SupervisorApi extends Api {
     stopProcessGroup() {
     }
 
-    tailProcessLog() {
+    tailProcessLog(name: string, offset: number, length: number): Promise<string> {
+        return this.call('tailProcessLog', [name, offset, length]);
     }
 
-    tailProcessStderrLog() {
+    tailProcessStderrLog(name: string, offset: number, length: number): Promise<string> {
+        return this.call('tailProcessStderrLog', [name, offset, length]);
     }
 
-    tailProcessStdoutLog() {
+    tailProcessStdoutLog(name: string, offset: number, length: number): Promise<string> {
+        return this.call('tailProcessStdoutLog', [name, offset, length]);
     }
 
 }

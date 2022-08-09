@@ -31,14 +31,14 @@ export type SupervisorState = {
 // Enums
 
 export enum ProcessInfoStateNames {
-    Stopped = 'STOPPED', // (0)
-    Starting = 'STARTING', // (10)
-    Running = 'RUNNING', // (20)
-    Backoff = 'BACKOFF', // (30)
-    Stopping = 'STOPPING', // (40)
-    Exited = 'EXITED', // (100)
-    Fatal = 'FATAL', // (200)
-    Unknown = 'UNKNOWN', // (1000)
+    Stopped = 'STOPPED',
+    Starting = 'STARTING',
+    Running = 'RUNNING',
+    Backoff = 'BACKOFF',
+    Stopping = 'STOPPING',
+    Exited = 'EXITED',
+    Fatal = 'FATAL',
+    Unknown = 'UNKNOWN',
 }
 
 export enum ProcessInfoStates {
