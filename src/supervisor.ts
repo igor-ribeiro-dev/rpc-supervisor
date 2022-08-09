@@ -3,7 +3,7 @@ import Api from './api';
 
 export default class SupervisorApi extends Api {
 
-    apiBaseName = 'supervisor'
+    basename = 'supervisor'
 
     createSystemApi() {
         return new SystemApi(this.client);

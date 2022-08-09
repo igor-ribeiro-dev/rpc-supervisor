@@ -4,7 +4,7 @@ const {getFullMethodName} = require("./api-utils");
 
 export default class Api {
 
-    apiBaseName: string | undefined;
+    basename: string | undefined;
     client: Client;
 
     constructor(clientRpc: Client) {
@@ -16,7 +16,7 @@ export default class Api {
      */
     protected call(method: string, params: any = []): Promise<any> {
         return new Promise((resolve, reject) => {
-            const fullMethodName = getFullMethodName(this.apiBaseName, method);
+            const fullMethodName = getFullMethodName(this.basename, method);
             this.client.methodCall(fullMethodName, params, (error, value) => {
                 if (error) {
                     reject(error);

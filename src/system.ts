@@ -3,17 +3,12 @@ import Api from "./api";
 
 export default class SystemApi extends Api {
 
-    apiBaseName = 'system'
+    basename = 'system'
 
     createSupervisorApi() {
         return new SupervisorApi(this.client);
     }
 
-    /**
-     * Return an array listing the available method names
-     *
-     * @returns {Promise<string[]>}
-     */
     async listMethods() {
         return this.call('listMethods');
     }
