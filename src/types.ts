@@ -28,6 +28,35 @@ export type SupervisorState = {
     statename: StateName,
 }
 
+export type ConfigInfo = {
+    autostart: boolean,
+    command: string,
+    exitcodes: number[],
+    group: string,
+    group_prio: number,
+    inuse: boolean,
+    killasgroup: boolean,
+    name: string,
+    process_prio: number,
+    redirect_stderr: boolean,
+    startretries: number,
+    startsecs: number,
+    stdout_capture_maxbytes: number,
+    stdout_events_enabled: boolean,
+    stdout_logfile: string,
+    stdout_logfile_backups: number,
+    stdout_logfile_maxbytes: number,
+    stdout_syslog: boolean,
+    stopsignal: number,
+    stopwaitsecs: number,
+    stderr_capture_maxbytes: number,
+    stderr_events_enabled: boolean,
+    stderr_logfile: string,
+    stderr_logfile_backups: number,
+    stderr_logfile_maxbytes: number,
+    stderr_syslog: boolean
+}
+
 // Enums
 
 export enum ProcessInfoStateNames {
@@ -64,4 +93,9 @@ export enum StateName {
     Running = 'RUNNING',
     Restarting = 'RESTARTING',
     Shutdown = 'SHUTDOWN',
+}
+
+export enum Signal {
+    One = '1',
+    Hup = 'HUP',
 }

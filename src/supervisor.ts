@@ -1,6 +1,6 @@
 import SystemApi from './system.js';
 import Api from './api';
-import {ProcessInfo, SupervisorState} from "./types";
+import {ConfigInfo, ProcessInfo, Signal, SupervisorState} from "./types";
 
 export default class SupervisorApi extends Api {
 
@@ -11,7 +11,8 @@ export default class SupervisorApi extends Api {
     }
 
 
-    async addProcessGroup() {
+    async addProcessGroup(name: string): Promise<boolean> {
+        return this.call('addProcessGroup', [name]);
     }
 
     async clearAllProcessLogs(): Promise<ProcessInfo[]> {
@@ -22,7 +23,8 @@ export default class SupervisorApi extends Api {
         return this.call('clearLog');
     }
 
-    async clearProcessLog() {
+    async clearProcessLog(name: string): Promise<true> {
+        return this.call('clearProcessLog', [name]);
     }
 
     async clearProcessLogs(): Promise<boolean> {
@@ -33,7 +35,8 @@ export default class SupervisorApi extends Api {
         return this.call('getAPIVersion');
     }
 
-    async getAllConfigInfo() {
+    async getAllConfigInfo(): Promise<ConfigInfo[]> {
+        return this.call('getAllConfigInfo');
     }
 
     async getAllProcessInfo(): Promise<ProcessInfo[]> {
@@ -60,7 +63,11 @@ export default class SupervisorApi extends Api {
         return this.call('getSupervisorVersion');
     }
 
-    async getVersion() {
+    /**
+     * @deprecated
+     */
+    async getVersion(): Promise<string> {
+        return this.call('getVersion');
     }
 
     async readLog(offset: number, length: number): Promise<string> {
@@ -83,52 +90,64 @@ export default class SupervisorApi extends Api {
         return this.call('readProcessStdoutLog', [name, offset, length]);
     }
 
-    async reloadConfig() {
+    async reloadConfig(): Promise<Array<string[]>> {
+        return this.call('reloadConfig');
     }
 
-    async removeProcessGroup() {
+    async removeProcessGroup(name: string): Promise<boolean> {
+        return this.call('removeProcessGroup', [name]);
     }
 
     async restart(): Promise<boolean> {
         return this.call('restart');
     }
 
-    async sendProcessStdin() {
+    async sendProcessStdin(name: string, chars: string): Promise<true> {
+        return this.call('sendProcessStdin', [name, chars]);
     }
 
-    async sendRemoteCommEvent() {
+    async sendRemoteCommEvent(type: string, data: string): Promise<true> {
+        return this.call('sendRemoteCommEvent', [type, data]);
     }
 
     async shutdown(): Promise<boolean> {
         return this.call('shutdown');
     }
 
-    async signalAllProcesses() {
+    async signalAllProcesses(signals: Signal): Promise<ProcessInfo[]> {
+        return this.call('signalAllProcesses', [signals]);
     }
 
-    async signalProcess() {
+    async signalProcess(name: string, signal: Signal): Promise<boolean> {
+        return this.call('signalProcess', [name, signal]);
     }
 
-    async signalProcessGroup() {
+    async signalProcessGroup(name: string, signal: Signal): Promise<boolean[]> {
+        return this.call('signalProcessGroup', [name, signal]);
     }
 
-    async startAllProcesses() {
+    async startAllProcesses(wait: boolean = true): Promise<ProcessInfo> {
+        return this.call('startAllProcesses', [wait]);
     }
 
     async startProcess(name: string, wait: boolean = true): Promise<boolean> {
         return this.call('startProcess', [name, wait]);
     }
 
-    async startProcessGroup() {
+    async startProcessGroup(name: string, wait: boolean = true): Promise<ProcessInfo> {
+        return this.call('startProcessGroup', [name, wait]);
     }
 
-    async stopAllProcesses() {
+    async stopAllProcesses(wait: boolean = true): Promise<ProcessInfo> {
+        return this.call('stopAllProcesses', [wait]);
     }
 
-    async stopProcess() {
+    async stopProcess(name: string, wait: boolean = true): Promise<boolean> {
+        return this.call('stopProcess', [name, wait]);
     }
 
-    async stopProcessGroup() {
+    async stopProcessGroup(name: string, wait: boolean = true) {
+        return this.call('stopProcessGroup', [name, wait]);
     }
 
     async tailProcessLog(name: string, offset: number, length: number): Promise<string> {
@@ -142,5 +161,4 @@ export default class SupervisorApi extends Api {
     async tailProcessStdoutLog(name: string, offset: number, length: number): Promise<string> {
         return this.call('tailProcessStdoutLog', [name, offset, length]);
     }
-
 }
