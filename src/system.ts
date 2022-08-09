@@ -10,6 +10,7 @@ export default class SystemApi extends Api {
     }
 
     /**
+     * Return an array listing the available method names
      *
      * @returns {Promise<string[]>}
      */
@@ -17,7 +18,9 @@ export default class SystemApi extends Api {
         return this.call('listMethods');
     }
 
-    methodHelp() {}
+    async methodHelp(name: string): Promise<string> {
+        return this.call('methodHelp', [name]);
+    }
     methodSignature() {}
     multicall() {}
 }

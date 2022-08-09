@@ -14,7 +14,7 @@ export default class Api {
     /**
      * @protected
      */
-    protected call(method: string, params = []) {
+    protected call(method: string, params: any = []): Promise<any> {
         return new Promise((resolve, reject) => {
             const fullMethodName = getFullMethodName(this.apiBaseName, method);
             this.client.methodCall(fullMethodName, params, (error, value) => {
