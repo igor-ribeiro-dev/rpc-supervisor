@@ -1,6 +1,6 @@
 import SystemApi from './system.js';
 import Api from './api';
-import {ProcessInfo} from "./types";
+import {ProcessInfo, SupervisorState} from "./types";
 
 export default class SupervisorApi extends Api {
 
@@ -36,20 +36,24 @@ export default class SupervisorApi extends Api {
     getAllProcessInfo() {
     }
 
-    getIdentification() {
+    getIdentification(): Promise<string> {
+        return this.call('getIdentification');
     }
 
-    getPID() {
+    getPID(): Promise<number> {
+        return this.call('getPID');
     }
 
     getProcessInfo(name: string): Promise<ProcessInfo> {
         return this.call('getProcessInfo', [name]);
     }
 
-    getState() {
+    getState(): Promise<SupervisorState> {
+        return this.call('getState');
     }
 
-    getSupervisorVersion() {
+    getSupervisorVersion(): Promise<string> {
+        return this.call('getSupervisorVersion');
     }
 
     getVersion() {

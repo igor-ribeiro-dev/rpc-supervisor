@@ -23,6 +23,11 @@ export type ProcessInfo = {
     description: string
 }
 
+export type SupervisorState = {
+    statecode: StateCode,
+    statename: StateName,
+}
+
 // Enums
 
 export enum ProcessInfoStateNames {
@@ -45,4 +50,18 @@ export enum ProcessInfoStates {
     Exited = 100,
     Fatal = 200,
     Unknown = 1000,
+}
+
+export enum StateCode {
+    Fatal = 2,
+    Running = 1,
+    Restarting = 0,
+    Shutdown = -1,
+}
+
+export enum StateName {
+    Fatal = 'FATAL',
+    Running = 'RUNNING',
+    Restarting = 'RESTARTING',
+    Shutdown = 'SHUTDOWN',
 }
