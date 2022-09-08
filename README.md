@@ -15,7 +15,7 @@ npm install rpc-supervisor
 
 ### Usage
 ___
-Following the supervisor documentation (which can be found [here](http://supervisord.org/api.htm)), I separated the APIs into two objects: ``SupervisorApi`` and ``SystemApi``.  
+Following the supervisor documentation (which can be found [here](http://supervisord.org/api.html)), I separated the APIs into two objects: ``SupervisorApi`` and ``SystemApi``.  
 
 > **Important**: All methods return a promise of their own type.
 
